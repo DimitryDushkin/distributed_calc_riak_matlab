@@ -1,0 +1,7 @@
+
+deps/*
+*.beam
+.settings
+.project
+.eunit/*
+.DS_Store
