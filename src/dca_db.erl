@@ -93,7 +93,7 @@ handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
 	Query = [{map,												 	%query type
 			 {modfun, riak_kv_mapreduce, map_object_value},		 	%function from riak erlang built-in module
 			 none, true}],
-	Inputs = {Bucket, [["between", 0]]},
+	Inputs = {Bucket, [["between", 0, 1]]},
 	Result = riakc_pb_socket:mapred(Pid, Inputs, Query),
 	{reply, Result, State};
 
