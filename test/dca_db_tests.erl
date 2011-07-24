@@ -7,7 +7,9 @@ main_test_() ->
      fun cleanup/1,
      [
       fun db_server_up/1,
-	  fun db_delete_data/1
+	  %fun insert_data/1,
+	  %fun db_delete_data/1
+	  fun range_request/1
      ]}.
 
 setup() -> 
@@ -18,10 +20,19 @@ cleanup(Pid) ->
 db_server_up(Pid) ->
 	?_assertEqual(pong, gen_server:call(Pid, ping)).
 
-db_insert_data(Pid) ->
+insert_data(Pid) ->
+	FilePath = "../data/data-set-2.txt",
 	{timeout, 3000000,
-	 	?_assertEqual(ok, gen_server:call(Pid, insert_data, infinity))}.
+	 	?_assertEqual(ok, gen_server:call(Pid, {insert_data, FilePath}, infinity))}.
 
-db_delete_data(Pid) ->
+delete_data(Pid) ->
 	{timeout, 3000000,
 	 	?_assertEqual(ok, gen_server:call(Pid, delete_bucket, infinity))}.
+
+range_request(Pid) ->
+	Bucket = <<"2011-07-24-23-39-45">>,
+	Result = gen_server:call(Pid, {range_query, Bucket, 0, 1}),
+	error_logger:info_msg("RESULT:~p~n",[Result]).
+
+	
+	

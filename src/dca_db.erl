@@ -20,8 +20,6 @@
 
 -record(state, {db_pid}).
 
--define(DEFAULT_BUCKET_NAME, "dca2").
-
 %% ====================================================================
 %% External functions
 %% ====================================================================
@@ -63,40 +61,50 @@ init([]) ->
 %%          {stop, Reason, Reply, State}   | (terminate/2 is called)
 %%          {stop, Reason, State}            (terminate/2 is called)
 %% --------------------------------------------------------------------
-handle_call(insert_data, _From, #state{db_pid = Db_pid} = State) -> 
-	{ok, Regexp} = re:compile("[0-9.,]+\t?"),
-	ValueCount = for_each_line_in_file("../data/data-set-1.txt",
-						  fun(Line, Count) ->
-							case re:run(Line, Regexp, [global, {capture, [1], binary}]) of
-								{match, [Time, Value]} ->
-									Body = mochijson2:encode({struct, [
-										 {<<"set_id">>, <<"1">>},
-										 {<<"time">>, Time},
-										 {<<"value">>, Value}
-										]}),
-									%put object to "dca" bucket with generated key
-									Object = riakc_obj:new(<<?DEFAULT_BUCKET_NAME>>, undefined, Body),
-									{ok, _} = riakc_pb_socket:put(Db_pid, Object);
-								_ -> error_logger:info_msg("Cannot parse:~s",[Line])
-							end,
-							case Count rem 10000 of
-								0 -> error_logger:info_msg("Entries added:~s",[Count]);
-								_ -> ok
- 							end,
-    				   		Count + 1 
-						  end, [read], 0),
-	error_logger:info_msg("Entries inserted:~s", [ValueCount]),
+
+%% insert data in bucket named "yyyy-mm-dd-hh:mm:ss" of date added
+handle_call({insert_data, FilePath}, _From, #state{db_pid = Db_pid} = State) -> 
+	Bucket = dca_utils:get_date(),
+	{ok, Regexp} = re:compile("([0-9.,]+)\t?"),
+	TotalLines = countlines(FilePath),
+	ValueCount = for_each_line_in_file(FilePath,
+					fun(Line, Count) ->
+						case re:run(Line, Regexp, [global, {capture, [1], binary}]) of
+							{match, [[Time], [TimeValue]]} ->
+								Object = riakc_obj:new(Bucket, Time, TimeValue),
+								ok = riakc_pb_socket:put(Db_pid, Object);
+							_ -> error_logger:info_msg("Cannot parse:~p~n",[Line])
+						end,
+						case Count rem 10000 of
+							0 -> error_logger:info_msg("Entries added:~p/~p~n",[Count, TotalLines]);
+							_ -> ok
+ 						end,
+    					Count + 1 
+					end, [read], 0),
+	error_logger:info_msg("Entries inserted:~p~n", [ValueCount]),
 	{reply, ok, State};
 
-handle_call(delete_bucket, _From, #state{db_pid = Db_pid} = State) ->
+%% Perform range query via simple key filters
+%% @see http://wiki.basho.com/MapReduce.html#MapReduce-via-the-Erlang-API
+%% @see more about pb client /deps/riakc/docs/pb-client.txt
+%% @see http://wiki.basho.com/Key-Filters.html
+handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
+	%error_logger:info_msg("PHASE~n",[]),
+	Query = [{map,												 	%query type
+			 {modfun, riak_kv_mapreduce, map_object_value},		 	%function from riak erlang built-in module
+			 none, true}],
+	Inputs = {Bucket, [["between", 0]]},
+	Result = riakc_pb_socket:mapred(Pid, Inputs, Query),
+	{reply, Result, State};
+
+
+
+%% Delete all entries in bucket with given name
+handle_call({delete_bucket, Bucket}, _From, #state{db_pid = Db_pid} = State) ->
 	%list all keys
-	{ok, Keys} = riakc_pb_socket:list_keys(Db_pid, <<?DEFAULT_BUCKET_NAME>>),
+	{ok, Keys} = riakc_pb_socket:list_keys(Db_pid, <<Bucket>>),
 	TotalCount = erlang:length(Keys),
-	ok = delete_keys(Keys, 0, Db_pid, TotalCount),
-%% 	lists:foreach(fun(Key) ->
-%% 				  	%delete 
-%% 					riakc_pb_socket:delete(Db_pid, ?DEFAULT_BUCKET_NAME, Key)
-%% 				  end, Keys),
+	ok = delete_keys(Keys, 0, Db_pid, Bucket, TotalCount),
 	{reply, ok, State};
 
 handle_call(ping, _From, #state{db_pid = Db_pid} = State) -> 
@@ -147,16 +155,16 @@ code_change(_OldVsn, State, _Extra) ->
 %% --------------------------------------------------------------------
 
 %% @doc delete each row and show stat
-delete_keys([], _, _, _) -> ok;
-delete_keys([Key|Rest], Acc, Db_pid, TotalCount) ->
+delete_keys([], _, _, _, _) -> ok;
+delete_keys([Key|Rest], Acc, Db_pid, Bucket, TotalCount) ->
 	Acc1 = Acc + 1,
 	case Acc rem 10000 of
 		0 -> error_logger:info_msg("Entries deleted:~s/~s", [Acc, TotalCount]);
 		_ -> ok
  	end,
-	%error_logger:info_msg("Key:~s", [Key]),
-	ok = riakc_pb_socket:delete(Db_pid, <<?DEFAULT_BUCKET_NAME>>, Key),
-	delete_keys(Rest, Acc1, Db_pid, TotalCount).
+	%error_logger:info_msg("Key:~p", [Key]),
+	ok = riakc_pb_socket:delete(Db_pid, Bucket, Key),
+	delete_keys(Rest, Acc1, Db_pid, Bucket, TotalCount).
 
 
 %% @doc read file line by line. Each line handled by Proc function
@@ -170,3 +178,15 @@ for_each_line(Device, Proc, Accum) ->
         Line -> NewAccum = Proc(Line, Accum),
                 for_each_line(Device, Proc, NewAccum)
     end.
+
+
+%% @doc count lines in file
+int_countlines(Device, Result) ->
+    case io:get_line(Device, "") of
+        eof  -> file:close(Device), Result;
+        _ -> int_countlines(Device, Result + 1)
+    end.
+    
+countlines(FileName) ->
+    {ok, Device} = file:open(FileName,[read]),
+    int_countlines(Device, 0).

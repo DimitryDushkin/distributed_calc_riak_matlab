@@ -3,6 +3,10 @@
   {description, ""},
   {vsn, "1.0.0"},
   {registered, []},
+  {modules, [dca_app,
+  			 dca_sup,
+  			 dca_db,
+  			 dca_utils]},
   {applications, [
                   kernel,
                   stdlib
