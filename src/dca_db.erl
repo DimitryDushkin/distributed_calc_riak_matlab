@@ -65,6 +65,25 @@ init([]) ->
 %% insert data in bucket named "yyyy-mm-dd-hh:mm:ss" of date added
 handle_call({insert_data, FilePath}, _From, #state{db_pid = Db_pid} = State) -> 
 	Bucket = dca_utils:get_date(),
+	%% install riak search post-commit hook
+	inets:start(),
+%% 	RequestBody = {struct, [{<<"props">>,
+%% 							 {struct, [{<<"precommit">>, 
+%% 										{array,
+%% 										 {struct, [{<<"mod">>, <<"riak_search_kv_hook">>},
+%% 												   {<<"fun">>, <<"precommit">>}]}
+%% 										}
+%% 									  }]
+%% 							 }
+%% 						   }]}, 
+	RequestBody = "{\"props\":{\"precommit\":[{\"mod\":\"riak_search_kv_hook\",\"fun\":\"precommit\"}]}}",
+	httpc:request(put,
+				  {"http://localhost:8091/riak/" ++ Bucket,	%url
+				   [],						 %headers
+				   "application/json",		 %content-type
+				   RequestBody				 %body
+				   },							
+				  [], []),
 	{ok, Regexp} = re:compile("([0-9.,]+)\t?"),
 	TotalLines = countlines(FilePath),
 	ValueCount = for_each_line_in_file(FilePath,
@@ -73,7 +92,8 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Db_pid} = State) ->
 							{match, [[Time], [TimeValue]]} ->
 								Object = riakc_obj:new(list_to_binary(Bucket),
 													   list_to_binary(Time),
-													   list_to_binary(TimeValue)),
+													   list_to_binary(TimeValue),
+													   <<"text/plain">>),
 								ok = riakc_pb_socket:put(Db_pid, Object);
 							_ -> error_logger:info_msg("Cannot parse:~p~n",[Line])
 						end,
@@ -90,13 +110,18 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Db_pid} = State) ->
 %% @see http://wiki.basho.com/MapReduce.html#MapReduce-via-the-Erlang-API
 %% @see more about pb client /deps/riakc/docs/pb-client.txt
 %% @see http://wiki.basho.com/Key-Filters.html
-handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
-	Query = [{map,												 	%query type
-			 {modfun, riak_kv_mapreduce, map_object_value},		 	%function from riak erlang built-in module
-			 none, true}],
- 	Inputs = {Bucket, [[<<"between">>, list_to_binary(From), list_to_binary(To)]]},
-	Result = riakc_pb_socket:mapred(Pid, Inputs, Query, 120000),
+
+handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->	
+	Result = riakc_pb_socket:search(Pid, Bucket, <<"[0 TO 1000]">>),
 	{reply, Result, State};
+
+%% handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
+%% 	Query = [{map,												 	%query type
+%% 			 {modfun, riak_kv_mapreduce, map_object_value},		 	%function from riak erlang built-in module
+%% 			 none, true}],
+%%  	Inputs = {Bucket, [[<<"between">>, list_to_binary(From), list_to_binary(To)]]},
+%% 	Result = riakc_pb_socket:mapred(Pid, Inputs, Query, 120000),
+%% 	{reply, Result, State};
 
 
 
