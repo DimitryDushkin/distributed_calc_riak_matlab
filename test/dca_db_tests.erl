@@ -21,7 +21,7 @@ db_server_up(Pid) ->
 	?_assertEqual(pong, gen_server:call(Pid, ping)).
 
 insert_data(Pid) ->
-	FilePath = "../data/data-set-2.txt",
+	FilePath = "../data/data-set-1.txt",
 	{timeout, 3000000,
 	 	?_assertEqual(ok, gen_server:call(Pid, {insert_data, FilePath}, infinity))}.
 
@@ -30,9 +30,14 @@ delete_data(Pid) ->
 	 	?_assertEqual(ok, gen_server:call(Pid, delete_bucket, infinity))}.
 
 range_request(Pid) ->
-	Bucket = <<"2011-07-24-23-39-45">>,
-	Result = gen_server:call(Pid, {range_query, Bucket, 0, 1}),
-	error_logger:info_msg("RESULT:~p~n",[Result]).
+	Start = dca_utils:get_timestamp(),
+	Bucket = list_to_binary("2011-07-25-13:38:45"),
+	Reply = gen_server:call(Pid, {range_query, Bucket, "0", "1.5"}, infinity),
+	{ok, [{0, Result}] } = Reply,
+	RequestTime = dca_utils:get_timestamp() - Start,
+	error_logger:info_msg("Keys count:~p~n",[erlang:length(Result)]),
+	error_logger:info_msg("Request took:~p ms~n",[RequestTime]),
+	?_assertMatch({ok, _}, Reply).
 
 	
 	

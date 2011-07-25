@@ -69,9 +69,11 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Db_pid} = State) ->
 	TotalLines = countlines(FilePath),
 	ValueCount = for_each_line_in_file(FilePath,
 					fun(Line, Count) ->
-						case re:run(Line, Regexp, [global, {capture, [1], binary}]) of
+						case re:run(Line, Regexp, [global, {capture, [1], list}]) of
 							{match, [[Time], [TimeValue]]} ->
-								Object = riakc_obj:new(Bucket, Time, TimeValue),
+								Object = riakc_obj:new(list_to_binary(Bucket),
+													   list_to_binary(Time),
+													   list_to_binary(TimeValue)),
 								ok = riakc_pb_socket:put(Db_pid, Object);
 							_ -> error_logger:info_msg("Cannot parse:~p~n",[Line])
 						end,
@@ -89,12 +91,11 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Db_pid} = State) ->
 %% @see more about pb client /deps/riakc/docs/pb-client.txt
 %% @see http://wiki.basho.com/Key-Filters.html
 handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
-	%error_logger:info_msg("PHASE~n",[]),
 	Query = [{map,												 	%query type
 			 {modfun, riak_kv_mapreduce, map_object_value},		 	%function from riak erlang built-in module
 			 none, true}],
-	Inputs = {Bucket, [["between", 0, 1]]},
-	Result = riakc_pb_socket:mapred(Pid, Inputs, Query),
+ 	Inputs = {Bucket, [[<<"between">>, list_to_binary(From), list_to_binary(To)]]},
+	Result = riakc_pb_socket:mapred(Pid, Inputs, Query, 120000),
 	{reply, Result, State};
 
 
