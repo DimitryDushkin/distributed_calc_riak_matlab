@@ -10,10 +10,11 @@ main_test_() ->
 	  %fun insert_data/1,
 	  %fun db_delete_data/1
 	  fun range_request/1
+	  %fun list_buckets/1
      ]}.
 
 setup() -> 
-	{ok,Pid} = dca_db:start_link(), Pid.
+	{ok, Pid} = dca_db:start_link(), Pid.
 cleanup(Pid) -> 
 	gen_server:call(Pid, stop).
 
@@ -31,10 +32,14 @@ delete_data(Pid) ->
 
 range_request(Pid) ->
 	Start = dca_utils:get_timestamp(),
-	Bucket = list_to_binary("2011-07-25-23:55:19"),
-	Reply = gen_server:call(Pid, {range_query, Bucket, "0", "1.5"}, infinity),
+	Bucket = list_to_binary("2011-07-29-10:35:14"),
+	Reply = gen_server:call(Pid, {range_query, Bucket, "0", "1000"}, infinity),
 	{ok, Result} = Reply,
 	error_logger:info_msg("Found ~p entries~n",[length(Result)]),
  	RequestTime = dca_utils:get_timestamp() - Start,
  	error_logger:info_msg("Request took:~p ms~n",[RequestTime]),
 	?_assertMatch({ok, _}, Reply).	
+
+list_buckets(Pid) ->
+	Reply = gen_server:call(Pid, list_buckets),
+	error_logger:info_msg("Result ~p~n",[Reply]).

@@ -20,6 +20,10 @@
 
 -record(state, {db_pid}).
 
+-define(RIAK_IP, "127.0.0.1").
+-define(RIAK_PB_PORT, 8081).
+-define(RIAK_HTTP_PORT, 8091).
+
 %% ====================================================================
 %% External functions
 %% ====================================================================
@@ -48,7 +52,7 @@ start_link() ->
 %%          {stop, Reason}
 %% --------------------------------------------------------------------
 init([]) ->
-	{ok, Pid} = riakc_pb_socket:start_link("127.0.0.1", 8081),
+	{ok, Pid} = riakc_pb_socket:start_link(?RIAK_IP, ?RIAK_PB_PORT),
     {ok, #state{db_pid = Pid}}.
 
 %% --------------------------------------------------------------------
@@ -63,22 +67,14 @@ init([]) ->
 %% --------------------------------------------------------------------
 
 %% insert data in bucket named "yyyy-mm-dd-hh:mm:ss" of date added
-handle_call({insert_data, FilePath}, _From, #state{db_pid = Db_pid} = State) -> 
+handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) -> 
 	Bucket = dca_utils:get_date(),
 	%% install riak search post-commit hook
-	inets:start(),
-%% 	RequestBody = {struct, [{<<"props">>,
-%% 							 {struct, [{<<"precommit">>, 
-%% 										{array,
-%% 										 {struct, [{<<"mod">>, <<"riak_search_kv_hook">>},
-%% 												   {<<"fun">>, <<"precommit">>}]}
-%% 										}
-%% 									  }]
-%% 							 }
-%% 						   }]}, 
+	inets:start(), 
 	RequestBody = "{\"props\":{\"precommit\":[{\"mod\":\"riak_search_kv_hook\",\"fun\":\"precommit\"}]}}",
+	Url = lists:append(["http://", ?RIAK_IP, ":", integer_to_list(?RIAK_HTTP_PORT), "/riak/", Bucket ]),
 	httpc:request(put,
-				  {"http://localhost:8091/riak/" ++ Bucket,	%url
+				  {Url, 
 				   [],						 %headers
 				   "application/json",		 %content-type
 				   RequestBody				 %body
@@ -94,7 +90,7 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Db_pid} = State) ->
 													   list_to_binary(Time),
 													   list_to_binary(TimeValue),
 													   <<"text/plain">>),
-								ok = riakc_pb_socket:put(Db_pid, Object);
+								ok = riakc_pb_socket:put(Pid, Object);
 							_ -> error_logger:info_msg("Cannot parse:~p~n",[Line])
 						end,
 						case Count rem 10000 of
@@ -112,9 +108,12 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Db_pid} = State) ->
 %% @see http://wiki.basho.com/Key-Filters.html
 
 handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->	
-	Result = riakc_pb_socket:search(Pid, Bucket, <<"[0 TO 1000]">>),
+	Query = "["++ From ++ " TO " ++ To ++ "]",
+	Result = riakc_pb_socket:search(Pid, Bucket, list_to_binary(Query)),
 	{reply, Result, State};
 
+
+%% range query via list filters
 %% handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
 %% 	Query = [{map,												 	%query type
 %% 			 {modfun, riak_kv_mapreduce, map_object_value},		 	%function from riak erlang built-in module
@@ -123,18 +122,21 @@ handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
 %% 	Result = riakc_pb_socket:mapred(Pid, Inputs, Query, 120000),
 %% 	{reply, Result, State};
 
-
+%% get buckets list
+handle_call(list_buckets, _From,  #state{db_pid = Pid} = State) ->
+	{ok, Buckets} = riakc_pb_socket:list_buckets(Pid),
+	{reply, Buckets, State};
 
 %% Delete all entries in bucket with given name
-handle_call({delete_bucket, Bucket}, _From, #state{db_pid = Db_pid} = State) ->
+handle_call({delete_bucket, Bucket}, _From, #state{db_pid = Pid} = State) ->
 	%list all keys
-	{ok, Keys} = riakc_pb_socket:list_keys(Db_pid, <<Bucket>>),
+	{ok, Keys} = riakc_pb_socket:list_keys(Pid, <<Bucket>>),
 	TotalCount = erlang:length(Keys),
-	ok = delete_keys(Keys, 0, Db_pid, Bucket, TotalCount),
+	ok = delete_keys(Keys, 0, Pid, Bucket, TotalCount),
 	{reply, ok, State};
 
-handle_call(ping, _From, #state{db_pid = Db_pid} = State) -> 
-	Result = riakc_pb_socket:ping(Db_pid),
+handle_call(ping, _From, #state{db_pid = Pid} = State) -> 
+	Result = riakc_pb_socket:ping(Pid),
 	{reply, Result, State};
 
 handle_call(stop, _From, State) -> 

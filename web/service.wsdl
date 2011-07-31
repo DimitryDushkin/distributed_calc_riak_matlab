@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost:8888/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="service" targetNamespace="http://localhost:8888/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost:8888/">
+      <xsd:element name="getDataSetsListResponse"
+      	type="tns:dataSetsList">
+      </xsd:element>
+      <xsd:complexType name="dataSetsList">
+      	<xsd:sequence>
+      		<xsd:element name="dataSetName" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getDataSetsListResponse">
+    <wsdl:part element="tns:getDataSetsListResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="service">
+    <wsdl:operation name="getDataSetsList">
+      <wsdl:output message="tns:getDataSetsListResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="serviceSOAP" type="tns:service">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getDataSetsList">
+      <soap:operation soapAction="http://localhost:8888/getDataSetsList"/>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="service">
+    <wsdl:port binding="tns:serviceSOAP" name="serviceSOAP">
+      <soap:address location="http://localhost:8888/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

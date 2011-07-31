@@ -7,6 +7,9 @@ deps:
 	@$(REBAR) get-deps
 compile:
 	@$(REBAR) compile
+test_web:
+	@$(REBAR) compile skip_deps=true
+	@$(REBAR) eunit skip_deps=true suite=dca_web_server_tests
 test_db:
 	@$(REBAR) compile skip_deps=true
 	@$(REBAR) eunit skip_deps=true suite=dca_db_tests
