@@ -9,8 +9,9 @@ main_test_() ->
       fun db_server_up/1,
 	  %fun insert_data/1,
 	  %fun db_delete_data/1
-	  fun range_request/1
+	  %fun range_request/1,
 	  %fun list_buckets/1
+	  fun list_bucket/1
      ]}.
 
 setup() -> 
@@ -37,9 +38,21 @@ range_request(Pid) ->
 	{ok, Result} = Reply,
 	error_logger:info_msg("Found ~p entries~n",[length(Result)]),
  	RequestTime = dca_utils:get_timestamp() - Start,
- 	error_logger:info_msg("Request took:~p ms~n",[RequestTime]),
+ 	error_logger:info_msg("Request has taken:~p ms~n",[RequestTime]),
 	?_assertMatch({ok, _}, Reply).	
 
+list_bucket(Pid) ->
+	Start = dca_utils:get_timestamp(),
+	Bucket = <<"2011-07-29-10:35:14">>,
+	Reply = gen_server:call(Pid, {list_bucket, Bucket}, 120000),
+	RequestTime = dca_utils:get_timestamp() - Start,
+	error_logger:info_msg("Entries count: ~p~n",[length(Reply)]),
+ 	error_logger:info_msg("Request has taken:~p ms~n",[RequestTime]),
+	?_assertEqual(true, is_list(Reply)).
+
 list_buckets(Pid) ->
+	Start = dca_utils:get_timestamp(),
 	Reply = gen_server:call(Pid, list_buckets),
-	error_logger:info_msg("Result ~p~n",[Reply]).
+	error_logger:info_msg("Result ~p~n",[Reply]),
+	RequestTime = dca_utils:get_timestamp() - Start,
+ 	error_logger:info_msg("Request has taken:~p ms~n",[RequestTime]).

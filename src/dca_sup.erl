@@ -24,5 +24,7 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
-    {ok, { {one_for_one, 5, 10}, []} }.
+    Dca_web_server = ?CHILD(dca_web_server, worker),
+	Dca_db = ?CHILD(dca_db, worker),
+    {ok, {{one_for_one, 5, 10}, [Dca_web_server, Dca_db]}}.
 

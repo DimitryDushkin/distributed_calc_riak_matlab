@@ -5,7 +5,12 @@
 %% It is possible to add default values, but be aware that these will
 %% only be used when *writing* an xml document.
 
--record('p:dataSetsList', {anyAttribs, 'dataSetName'}).
+-record('p:GetDataSetValues', {anyAttribs, 'dataSetName'}).
+-record('p:GetDataSetValuesByRange', {anyAttribs, 'from', 'to'}).
+-record('p:GetDataSetValuesByRangeResponse', {anyAttribs, 'values'}).
+-record('p:GetDataSetValuesResponse', {anyAttribs, 'values'}).
+-record('p:GetDataSetsList', {anyAttribs, 'in'}).
+-record('p:GetDataSetsListResponse', {anyAttribs, 'dataSetsList'}).
 -record('soap:Body', {anyAttribs, choice}).
 -record('soap:Envelope', {anyAttribs, 'Header', 'Body', choice}).
 -record('soap:Fault', {anyAttribs, 'faultcode', 'faultstring', 'faultactor', 'detail'}).

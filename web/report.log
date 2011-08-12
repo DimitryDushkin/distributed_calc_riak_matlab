@@ -13,3 +13,827 @@ stop_ready([], <0.116.0>)
 
 =INFO REPORT==== 31-Jul-2011::23:21:56 ===
 stop_ready([], <0.114.0>)
+
+=INFO REPORT==== 11-Aug-2011::10:43:20 ===
+stop_ready([], <0.108.0>)
+
+=INFO REPORT==== 11-Aug-2011::10:48:06 ===
+stop_ready([], <0.122.0>)
+
+=INFO REPORT==== 11-Aug-2011::10:48:36 ===
+stop_ready([], <0.116.0>)
+
+=INFO REPORT==== 11-Aug-2011::10:49:03 ===
+Format:ok
+=INFO REPORT==== 11-Aug-2011::10:49:03 ===
+stop_ready([], <0.116.0>)
+
+=INFO REPORT==== 11-Aug-2011::10:49:31 ===
+stop_ready([], <0.116.0>)
+
+=INFO REPORT==== 11-Aug-2011::10:51:02 ===
+stop_ready([], <0.113.0>)
+
+=INFO REPORT==== 11-Aug-2011::10:51:38 ===
+Wsdl:ok
+=INFO REPORT==== 11-Aug-2011::10:51:38 ===
+stop_ready([], <0.119.0>)
+
+=INFO REPORT==== 11-Aug-2011::10:51:59 ===
+stop_ready([], <0.113.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:34:54 ===
+stop_ready([], <0.187.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:35:28 ===
+stop_ready([], <0.187.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:42:00 ===
+stop_ready([], <0.186.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:43:52 ===
+stop_ready([], <0.173.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:53:38 ===
+stop_ready([], <0.177.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:55:59 ===
+stop_ready([], <0.174.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:57:01 ===
+stop_ready([], <0.187.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:57:37 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::22:57:37 ===
+Op:{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+              "http://localhost:8888/service.yaws",
+              "http://localhost:8888/getDataSetsList"}
+=INFO REPORT==== 11-Aug-2011::22:57:37 ===
+stop_ready([], <0.180.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:58:29 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::22:58:29 ===
+Op:{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+              "http://localhost:8888/service.yaws",
+              "http://localhost:8888/getDataSetsList"}
+=INFO REPORT==== 11-Aug-2011::22:58:29 ===
+Adres:"http://localhost:8888/service.yaws"
+=INFO REPORT==== 11-Aug-2011::22:58:29 ===
+stop_ready([], <0.187.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:59:06 ===
+stop_ready([], <0.180.0>)
+
+=INFO REPORT==== 11-Aug-2011::22:59:17 ===
+stop_ready([], <0.186.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:02:37 ===
+stop_ready([], <0.186.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:03:46 ===
+stop_ready([], <0.180.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:09:07 ===
+stop_ready([], <0.186.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:09:39 ===
+stop_ready([], <0.177.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:10:04 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::23:10:04 ===
+stop_ready([], <0.178.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:10:13 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::23:10:13 ===
+stop_ready([], <0.177.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:12:20 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::23:12:20 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 11-Aug-2011::23:12:20 ===
+stop_ready([], <0.183.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:13:52 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::23:13:52 ===
+stop_ready([], <0.180.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:15:53 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::23:15:53 ===
+stop_ready([], <0.178.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:18:08 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::23:18:08 ===
+stop_ready([], <0.172.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:18:29 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::23:18:29 ===
+stop_ready([], <0.174.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:19:05 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::23:19:05 ===
+stop_ready([], <0.175.0>)
+
+=ERROR REPORT==== 11-Aug-2011::23:19:49 ===
+Error in process <0.153.0> with exit value: {{badmatch,{error,"Malformed: Tags don't match"}},[{yaws_soap_lib,parseWsdls,5},{yaws_soap_lib,initModel2,5},{yaws_soap_srv,setup,2},{dca_web_server,run,0}]}
+
+
+=INFO REPORT==== 11-Aug-2011::23:19:49 ===
+stop_ready([], <0.178.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:22:54 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::23:22:54 ===
+stop_ready([], <0.172.0>)
+
+=INFO REPORT==== 11-Aug-2011::23:23:09 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 11-Aug-2011::23:23:09 ===
+stop_ready([], <0.178.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:15:57 ===
+Ops:[{operation,"service","serviceSOAP","getDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/getDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:15:57 ===
+stop_ready([], <0.162.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:23:34 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:23:34 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:23:34 ===
+stop_ready([], <0.178.0>)
+
+=ERROR REPORT==== 12-Aug-2011::11:24:51 ===
+Error in process <0.147.0> with exit value: {{badmatch,{error,"Malformed: Illegal character in prolog"}},[{yaws_soap_lib,parseWsdls,5},{yaws_soap_lib,initModel2,5},{yaws_soap_srv,setup,2},{dca_web_server,run,0}]}
+
+
+=INFO REPORT==== 12-Aug-2011::11:24:51 ===
+stop_ready([], <0.172.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:25:18 ===
+Ops:[{operation,"WeatherForecast","WeatherForecastSoap",
+                "GetWeatherByPlaceName","WeatherForecastSoap",
+                "http://www.webservicex.net/WeatherForecast.asmx",
+                "http://www.webservicex.net/GetWeatherByPlaceName"},
+     {operation,"WeatherForecast","WeatherForecastSoap","GetWeatherByZipCode",
+                "WeatherForecastSoap",
+                "http://www.webservicex.net/WeatherForecast.asmx",
+                "http://www.webservicex.net/GetWeatherByZipCode"}]
+=INFO REPORT==== 12-Aug-2011::11:25:18 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:25:18 ===
+stop_ready([], <0.174.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:32:37 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:32:37 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:32:37 ===
+stop_ready([], <0.178.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:34:10 ===
+stop_ready([], <0.119.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:34:10 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:34:10 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:34:10 ===
+stop_ready([], <0.178.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:39:56 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://www.example.org/",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:39:56 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:39:56 ===
+stop_ready([], <0.169.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:40:42 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:40:42 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:40:42 ===
+stop_ready([], <0.178.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:41:39 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:41:39 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:41:39 ===
+stop_ready([], <0.172.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:41:50 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:41:50 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:41:50 ===
+stop_ready([], <0.175.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:43:53 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:43:53 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:43:53 ===
+stop_ready([], <0.172.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:46:25 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:46:25 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:46:25 ===
+stop_ready([], <0.178.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:46:37 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:46:37 ===
+stop_ready([], <0.177.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:46:51 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:46:51 ===
+stop_ready([], <0.189.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:49:10 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:49:10 ===
+stop_ready([], <0.180.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:49:22 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:49:22 ===
+stop_ready([], <0.177.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:49:31 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:49:31 ===
+Result:{error,"operation not found"}
+=INFO REPORT==== 12-Aug-2011::11:49:31 ===
+stop_ready([], <0.176.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:49:38 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:49:38 ===
+stop_ready([], <0.183.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:50:08 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:50:08 ===
+stop_ready([], <0.169.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:50:15 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:50:15 ===
+stop_ready([], <0.172.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:51:20 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:51:20 ===
+bingo!
+=ERROR REPORT==== 12-Aug-2011::11:51:20 ===
+yaws_soap_srv(253): Srv Error: "Error writing XML: \"Type of value (integer) does not match model\""
+
+=ERROR REPORT==== 12-Aug-2011::11:51:20 ===
+{yaws_rpc,248,
+          {dca_web_server_handler,handler,
+                                  "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Server</faultcode><faultstring>Server error</faultstring></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>"}}
+
+=INFO REPORT==== 12-Aug-2011::11:51:20 ===
+Result:{ok,undefined,
+           [{'soap:Fault',[],
+                          {qname,"http://schemas.xmlsoap.org/soap/envelope/",
+                                 "Server","SOAP-ENV","soap"},
+                          "Server error",undefined,undefined}]}
+=INFO REPORT==== 12-Aug-2011::11:51:20 ===
+stop_ready([{{1313,135480,453037},<0.177.0>}], <0.187.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:54:13 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:54:13 ===
+bingo!
+=ERROR REPORT==== 12-Aug-2011::11:54:13 ===
+yaws_soap_srv(253): Srv Error: "Error writing XML: \"value has to be a list\""
+
+=ERROR REPORT==== 12-Aug-2011::11:54:13 ===
+{yaws_rpc,248,
+          {dca_web_server_handler,handler,
+                                  "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Server</faultcode><faultstring>Server error</faultstring></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>"}}
+
+=INFO REPORT==== 12-Aug-2011::11:54:13 ===
+Result:{ok,undefined,
+           [{'soap:Fault',[],
+                          {qname,"http://schemas.xmlsoap.org/soap/envelope/",
+                                 "Server","SOAP-ENV","soap"},
+                          "Server error",undefined,undefined}]}
+=INFO REPORT==== 12-Aug-2011::11:54:13 ===
+stop_ready([{{1313,135653,336545},<0.174.0>}], <0.185.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:54:46 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:54:46 ===
+bingo!
+=ERROR REPORT==== 12-Aug-2011::11:54:46 ===
+yaws_soap_srv(253): Srv Error: "Error writing XML: \"No value provided for non-optional element\""
+
+=ERROR REPORT==== 12-Aug-2011::11:54:46 ===
+{yaws_rpc,248,
+          {dca_web_server_handler,handler,
+                                  "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Server</faultcode><faultstring>Server error</faultstring></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>"}}
+
+=INFO REPORT==== 12-Aug-2011::11:54:46 ===
+Result:{ok,undefined,
+           [{'soap:Fault',[],
+                          {qname,"http://schemas.xmlsoap.org/soap/envelope/",
+                                 "Server","SOAP-ENV","soap"},
+                          "Server error",undefined,undefined}]}
+=INFO REPORT==== 12-Aug-2011::11:54:46 ===
+stop_ready([{{1313,135686,329348},<0.178.0>}], <0.185.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:55:48 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:55:48 ===
+bingo! In:"in"
+=ERROR REPORT==== 12-Aug-2011::11:55:48 ===
+yaws_soap_srv(253): Srv Error: "Error writing XML: \"value has to be a list\""
+
+=ERROR REPORT==== 12-Aug-2011::11:55:48 ===
+{yaws_rpc,248,
+          {dca_web_server_handler,handler,
+                                  "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Server</faultcode><faultstring>Server error</faultstring></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>"}}
+
+=INFO REPORT==== 12-Aug-2011::11:55:48 ===
+Result:{ok,undefined,
+           [{'soap:Fault',[],
+                          {qname,"http://schemas.xmlsoap.org/soap/envelope/",
+                                 "Server","SOAP-ENV","soap"},
+                          "Server error",undefined,undefined}]}
+=INFO REPORT==== 12-Aug-2011::11:55:48 ===
+stop_ready([{{1313,135748,140186},<0.181.0>}], <0.191.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:55:57 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:55:57 ===
+bingo! In:"inputdata"
+=ERROR REPORT==== 12-Aug-2011::11:55:57 ===
+yaws_soap_srv(253): Srv Error: "Error writing XML: \"value has to be a list\""
+
+=ERROR REPORT==== 12-Aug-2011::11:55:57 ===
+{yaws_rpc,248,
+          {dca_web_server_handler,handler,
+                                  "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Server</faultcode><faultstring>Server error</faultstring></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>"}}
+
+=INFO REPORT==== 12-Aug-2011::11:55:57 ===
+Result:{ok,undefined,
+           [{'soap:Fault',[],
+                          {qname,"http://schemas.xmlsoap.org/soap/envelope/",
+                                 "Server","SOAP-ENV","soap"},
+                          "Server error",undefined,undefined}]}
+=INFO REPORT==== 12-Aug-2011::11:55:57 ===
+stop_ready([{{1313,135757,117703},<0.183.0>}], <0.193.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:58:17 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:58:17 ===
+bingo! In:"inputdata"
+=ERROR REPORT==== 12-Aug-2011::11:58:17 ===
+yaws_soap_srv(253): Srv Error: "Error writing XML: \"value has to be a list\""
+
+=ERROR REPORT==== 12-Aug-2011::11:58:17 ===
+{yaws_rpc,248,
+          {dca_web_server_handler,handler,
+                                  "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Server</faultcode><faultstring>Server error</faultstring></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>"}}
+
+=INFO REPORT==== 12-Aug-2011::11:58:17 ===
+Result:{ok,undefined,
+           [{'soap:Fault',[],
+                          {qname,"http://schemas.xmlsoap.org/soap/envelope/",
+                                 "Server","SOAP-ENV","soap"},
+                          "Server error",undefined,undefined}]}
+=INFO REPORT==== 12-Aug-2011::11:58:17 ===
+stop_ready([{{1313,135897,621446},<0.178.0>}], <0.185.0>)
+
+=INFO REPORT==== 12-Aug-2011::11:59:27 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::11:59:27 ===
+bingo! In:"inputdata"
+=INFO REPORT==== 12-Aug-2011::11:59:27 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],["dataset1","dataset2"]}]}
+=INFO REPORT==== 12-Aug-2011::11:59:27 ===
+stop_ready([], <0.185.0>)
+
+=INFO REPORT==== 12-Aug-2011::12:00:55 ===
+Ops:[{operation,"service","serviceSOAP","GetDataSetsList","serviceSOAP",
+                "http://localhost:8888/service.yaws",
+                "http://localhost:8888/GetDataSetsList"}]
+=INFO REPORT==== 12-Aug-2011::12:00:55 ===
+bingo! In:"inputdata"
+=INFO REPORT==== 12-Aug-2011::12:00:55 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],["dataset1","dataset2"]}]}
+=INFO REPORT==== 12-Aug-2011::12:00:55 ===
+stop_ready([], <0.199.0>)
+
+=INFO REPORT==== 12-Aug-2011::12:01:16 ===
+bingo! In:"inputdata"
+=INFO REPORT==== 12-Aug-2011::12:01:16 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],["dataset1","dataset2"]}]}
+=INFO REPORT==== 12-Aug-2011::12:01:16 ===
+stop_ready([], <0.187.0>)
+
+=INFO REPORT==== 12-Aug-2011::12:02:05 ===
+bingo! In:"inputdata"
+=INFO REPORT==== 12-Aug-2011::12:02:05 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],["dataset1","dataset2"]}]}
+=INFO REPORT==== 12-Aug-2011::12:02:05 ===
+stop_ready([], <0.193.0>)
+
+=INFO REPORT==== 12-Aug-2011::12:02:22 ===
+bingo! In:"inputdata"
+=INFO REPORT==== 12-Aug-2011::12:02:22 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],["dataset1","dataset2"]}]}
+=INFO REPORT==== 12-Aug-2011::12:02:22 ===
+stop_ready([], <0.193.0>)
+
+=INFO REPORT==== 12-Aug-2011::12:39:06 ===
+Input data:"inputdata"
+=ERROR REPORT==== 12-Aug-2011::12:39:06 ===
+yaws_soap_srv(253): Srv Error: [69,114,114,111,114,32,112,114,111,99,101,115,
+                                115,105,110,103,32,109,101,115,115,97,103,101,
+                                58,32,
+                                [123,
+                                 ["'EXIT'",44,10,
+                                  ["  ","  ",
+                                   [32,["   ",32,32,32],"   ",32,32,32],
+                                   32,
+                                   ["   ",32,32,32],
+                                   "   ",32,32,32],
+                                  [123,
+                                   ["noproc",44,10,
+                                    ["  ","  ","  ","  ",
+                                     [32,["   ",32,32,32],"   ",32,32,32],
+                                     32,
+                                     ["   ",32,32,32],
+                                     "   ",32,32,32],
+                                    [123,
+                                     ["gen_server",44,"call",44,
+                                      [91,["dca_db",44,"list_buckets"],93]],
+                                     125]],
+                                   125]],
+                                 125]]
+
+=ERROR REPORT==== 12-Aug-2011::12:39:06 ===
+{yaws_rpc,248,
+          {dca_web_server_handler,handler,
+                                  "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Server</faultcode><faultstring>Server error</faultstring></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>"}}
+
+=INFO REPORT==== 12-Aug-2011::12:39:06 ===
+Result:{ok,undefined,
+           [{'soap:Fault',[],
+                          {qname,"http://schemas.xmlsoap.org/soap/envelope/",
+                                 "Server","SOAP-ENV","soap"},
+                          "Server error",undefined,undefined}]}
+=INFO REPORT==== 12-Aug-2011::12:39:06 ===
+stop_ready([{{1313,138346,572648},<0.173.0>}], <0.185.0>)
+
+=INFO REPORT==== 12-Aug-2011::12:39:49 ===
+Input data:"inputdata"
+=ERROR REPORT==== 12-Aug-2011::12:39:49 ===
+yaws_soap_srv(253): Srv Error: [69,114,114,111,114,32,112,114,111,99,101,115,
+                                115,105,110,103,32,109,101,115,115,97,103,101,
+                                58,32,
+                                [123,
+                                 ["'EXIT'",44,10,
+                                  ["  ","  ",
+                                   [32,["   ",32,32,32],"   ",32,32,32],
+                                   32,
+                                   ["   ",32,32,32],
+                                   "   ",32,32,32],
+                                  [123,
+                                   ["noproc",44,10,
+                                    ["  ","  ","  ","  ",
+                                     [32,["   ",32,32,32],"   ",32,32,32],
+                                     32,
+                                     ["   ",32,32,32],
+                                     "   ",32,32,32],
+                                    [123,
+                                     ["gen_server",44,"call",44,
+                                      [91,["dca_db",44,"list_buckets"],93]],
+                                     125]],
+                                   125]],
+                                 125]]
+
+=ERROR REPORT==== 12-Aug-2011::12:39:49 ===
+{yaws_rpc,248,
+          {dca_web_server_handler,handler,
+                                  "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Server</faultcode><faultstring>Server error</faultstring></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>"}}
+
+=INFO REPORT==== 12-Aug-2011::12:39:49 ===
+Result:{ok,undefined,
+           [{'soap:Fault',[],
+                          {qname,"http://schemas.xmlsoap.org/soap/envelope/",
+                                 "Server","SOAP-ENV","soap"},
+                          "Server error",undefined,undefined}]}
+=INFO REPORT==== 12-Aug-2011::12:39:49 ===
+stop_ready([{{1313,138389,478395},<0.178.0>}], <0.185.0>)
+
+=INFO REPORT==== 12-Aug-2011::12:40:08 ===
+Input data:"inputdata"
+=INFO REPORT==== 12-Aug-2011::12:40:08 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],["dataset1","dataset2"]}]}
+=INFO REPORT==== 12-Aug-2011::12:40:08 ===
+stop_ready([], <0.186.0>)
+
+=INFO REPORT==== 12-Aug-2011::12:40:54 ===
+Input data:"inputdata"
+=INFO REPORT==== 12-Aug-2011::12:40:54 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],["dataset1","dataset2"]}]}
+=INFO REPORT==== 12-Aug-2011::12:40:54 ===
+stop_ready([], <0.187.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:03:57 ===
+stop_ready([], <0.117.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:03:57 ===
+Input data:"inputdata"
+=ERROR REPORT==== 12-Aug-2011::13:04:02 ===
+{yaws_rpc,242,
+    {dca_web_server_handler,handler,
+        {'EXIT',
+            {shutdown,
+                {gen_server,call,
+                    [yaws_soap_srv,
+                     {request,
+                         {dca_web_server_handler,handler},
+                         "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><p:GetDataSetsList xmlns:p=\"http://localhost:8888/\"><in>inputdata</in></p:GetDataSetsList></soap:Body></soap:Envelope>",
+                         undefined,"http://localhost:8888/GetDataSetsList"},
+                     infinity]}}}}}
+
+=INFO REPORT==== 12-Aug-2011::13:04:02 ===
+stop_ready([], <0.193.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:05:27 ===
+stop_ready([], <0.131.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:05:27 ===
+Input data:"inputdata"
+=INFO REPORT==== 12-Aug-2011::13:05:30 ===
+Buckets:[<<"rekon">>,<<"_rsid_2011-07-29-10:35:14">>,
+         <<"2011-07-29-10:35:14">>]
+=INFO REPORT==== 12-Aug-2011::13:05:30 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],["dataset1","dataset2"]}]}
+=INFO REPORT==== 12-Aug-2011::13:05:30 ===
+stop_ready([], <0.207.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:08:20 ===
+stop_ready([], <0.123.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:08:20 ===
+Input data:"inputdata"
+=ERROR REPORT==== 12-Aug-2011::13:08:23 ===
+yaws_soap_srv(253): Srv Error: [69,114,114,111,114,32,112,114,111,99,101,115,
+                                115,105,110,103,32,109,101,115,115,97,103,101,
+                                58,32,
+                                [123,
+                                 ["'EXIT'",44,10,
+                                  ["  ","  ",
+                                   [32,["   ",32,32,32],"   ",32,32,32],
+                                   32,
+                                   ["   ",32,32,32],
+                                   "   ",32,32,32],
+                                  [123,
+                                   [[123,["badfun",44,"binary_to_list"],125],
+                                    44,10,
+                                    [32,"  ","  ",
+                                     [32,["   ",32,32,32],"   ",32,32,32],
+                                     32,
+                                     ["   ",32,32,32],
+                                     "   ",32,32,32],
+                                    [91,
+                                     [[123,["lists",44,"map",44,"2"],125],
+                                      44,10,
+                                      [32,32,"  ","  ",
+                                       [32,["   ",32,32,32],"   ",32,32,32],
+                                       32,
+                                       ["   ",32,32,32],
+                                       "   ",32,32,32],
+                                      [123,
+                                       ["dca_web_server_handler",44,
+                                        "get_data_sets_list",44,"1"],
+                                       125],
+                                      44,10,
+                                      [32,32,"  ","  ",
+                                       [32,["   ",32,32,32],"   ",32,32,32],
+                                       32,
+                                       ["   ",32,32,32],
+                                       "   ",32,32,32],
+                                      [123,
+                                       ["dca_web_server_handler",44,"handler",
+                                        44,"4"],
+                                       125],
+                                      44,10,
+                                      [32,32,"  ","  ",
+                                       [32,["   ",32,32,32],"   ",32,32,32],
+                                       32,
+                                       ["   ",32,32,32],
+                                       "   ",32,32,32],
+                                      [123,
+                                       ["yaws_soap_srv",44,"request",44,"5"],
+                                       125],
+                                      44,10,
+                                      [32,32,"  ","  ",
+                                       [32,["   ",32,32,32],"   ",32,32,32],
+                                       32,
+                                       ["   ",32,32,32],
+                                       "   ",32,32,32],
+                                      [123,
+                                       ["yaws_soap_srv",44,"handle_call",44,
+                                        "3"],
+                                       125],
+                                      44,10,
+                                      [32,32,"  ","  ",
+                                       [32,["   ",32,32,32],"   ",32,32,32],
+                                       32,
+                                       ["   ",32,32,32],
+                                       "   ",32,32,32],
+                                      [123,
+                                       ["gen_server",44,"handle_msg",44,"5"],
+                                       125],
+                                      44,10,
+                                      [32,32,"  ","  ",
+                                       [32,["   ",32,32,32],"   ",32,32,32],
+                                       32,
+                                       ["   ",32,32,32],
+                                       "   ",32,32,32],
+                                      [123,
+                                       ["proc_lib",44,"init_p_do_apply",44,
+                                        "3"],
+                                       125]],
+                                     93]],
+                                   125]],
+                                 125]]
+
+=ERROR REPORT==== 12-Aug-2011::13:08:23 ===
+{yaws_rpc,248,
+          {dca_web_server_handler,handler,
+                                  "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Server</faultcode><faultstring>Server error</faultstring></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>"}}
+
+=INFO REPORT==== 12-Aug-2011::13:08:23 ===
+Result:{ok,undefined,
+           [{'soap:Fault',[],
+                          {qname,"http://schemas.xmlsoap.org/soap/envelope/",
+                                 "Server","SOAP-ENV","soap"},
+                          "Server error",undefined,undefined}]}
+=INFO REPORT==== 12-Aug-2011::13:08:23 ===
+stop_ready([{{1313,140103,323414},<0.187.0>}], <0.199.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:11:17 ===
+stop_ready([], <0.123.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:11:17 ===
+Input data:"inputdata"
+=INFO REPORT==== 12-Aug-2011::13:11:20 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],
+                ["rekon","_rsid_2011-07-29-10:35:14","2011-07-29-10:35:14"]}]}
+=INFO REPORT==== 12-Aug-2011::13:11:20 ===
+stop_ready([], <0.199.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:35:22 ===
+stop_ready([], <0.123.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:35:22 ===
+stop_ready([], <0.147.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:35:22 ===
+Input data:"inputdata"
+=INFO REPORT==== 12-Aug-2011::13:35:25 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],
+                ["rekon","_rsid_2011-07-29-10:35:14","2011-07-29-10:35:14"]}]}
+=INFO REPORT==== 12-Aug-2011::13:35:25 ===
+stop_ready([], <0.205.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:36:14 ===
+stop_ready([], <0.117.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:36:14 ===
+Input data:"inputdata"
+=INFO REPORT==== 12-Aug-2011::13:36:17 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],
+                ["rekon","_rsid_2011-07-29-10:35:14","2011-07-29-10:35:14"]}]}
+=INFO REPORT==== 12-Aug-2011::13:36:17 ===
+stop_ready([], <0.193.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:36:42 ===
+stop_ready([], <0.123.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:36:42 ===
+Input data:"inputdata"
+=INFO REPORT==== 12-Aug-2011::13:36:45 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],
+                ["rekon","_rsid_2011-07-29-10:35:14","2011-07-29-10:35:14"]}]}
+=INFO REPORT==== 12-Aug-2011::13:36:45 ===
+stop_ready([], <0.199.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:38:38 ===
+stop_ready([], <0.117.0>)
+
+=INFO REPORT==== 12-Aug-2011::13:38:38 ===
+Input data:"inputdata"
+=INFO REPORT==== 12-Aug-2011::13:38:41 ===
+Result:{ok,undefined,
+           [{'p:GetDataSetsListResponse',[],
+                ["rekon","_rsid_2011-07-29-10:35:14","2011-07-29-10:35:14"]}]}
+=INFO REPORT==== 12-Aug-2011::13:38:41 ===
+stop_ready([], <0.193.0>)

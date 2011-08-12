@@ -52,8 +52,12 @@ start_link() ->
 %%          {stop, Reason}
 %% --------------------------------------------------------------------
 init([]) ->
-	{ok, Pid} = riakc_pb_socket:start_link(?RIAK_IP, ?RIAK_PB_PORT),
-    {ok, #state{db_pid = Pid}}.
+	case riakc_pb_socket:start_link(?RIAK_IP, ?RIAK_PB_PORT) of
+		{ok, Pid} -> {ok, #state{db_pid = Pid}};
+		{error,{tcp,econnrefused}} ->
+			error_logger:error_info("DB server is not started."),
+			{stop, "DB server is shutdown"}
+	end.
 
 %% --------------------------------------------------------------------
 %% Function: handle_call/3
@@ -69,6 +73,7 @@ init([]) ->
 %% insert data in bucket named "yyyy-mm-dd-hh:mm:ss" of date added
 handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) -> 
 	Bucket = dca_utils:get_date(),
+	
 	%% install riak search post-commit hook
 	inets:start(), 
 	RequestBody = "{\"props\":{\"precommit\":[{\"mod\":\"riak_search_kv_hook\",\"fun\":\"precommit\"}]}}",
@@ -80,6 +85,7 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) ->
 				   RequestBody				 %body
 				   },							
 				  [], []),
+	
 	{ok, Regexp} = re:compile("([0-9.,]+)\t?"),
 	TotalLines = countlines(FilePath),
 	ValueCount = for_each_line_in_file(FilePath,
@@ -121,6 +127,13 @@ handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
 %%  	Inputs = {Bucket, [[<<"between">>, list_to_binary(From), list_to_binary(To)]]},
 %% 	Result = riakc_pb_socket:mapred(Pid, Inputs, Query, 120000),
 %% 	{reply, Result, State};
+
+handle_call({list_bucket, Bucket}, _, #state{db_pid = Pid} = State) ->
+	Query = [{map,												 	%query type
+			 {modfun, riak_kv_mapreduce, map_object_value},		 	%function from riak erlang built-in module
+			 none, true}],
+ 	Result = riakc_pb_socket:mapred(Pid, Bucket, Query, 120000),
+	{reply, Result, State};
 
 %% get buckets list
 handle_call(list_buckets, _From,  #state{db_pid = Pid} = State) ->

@@ -2,28 +2,90 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost:8888/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="service" targetNamespace="http://localhost:8888/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://localhost:8888/">
-      <xsd:element name="getDataSetsListResponse"
-      	type="tns:dataSetsList">
+      <xsd:element name="GetDataSetsList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
       </xsd:element>
-      <xsd:complexType name="dataSetsList">
-      	<xsd:sequence>
-      		<xsd:element name="dataSetName" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-      	</xsd:sequence>
-      </xsd:complexType>
+      <xsd:element name="GetDataSetsListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="dataSetsList" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetDataSetValues">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="dataSetName" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetDataSetValuesResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="values" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetDataSetValuesByRange">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="from" type="xsd:string"></xsd:element>
+      			<xsd:element name="to" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetDataSetValuesByRangeResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="values" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="getDataSetsListResponse">
-    <wsdl:part element="tns:getDataSetsListResponse" name="parameters"/>
+  <wsdl:message name="GetDataSetsListRequest">
+    <wsdl:part element="tns:GetDataSetsList" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetsListResponse">
+    <wsdl:part element="tns:GetDataSetsListResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetValuesRequest">
+  	<wsdl:part name="parameters" element="tns:GetDataSetValues"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetValuesResponse">
+  	<wsdl:part name="parameters" element="tns:GetDataSetValuesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetValuesByRangeRequest">
+  	<wsdl:part name="parameters" element="tns:GetDataSetValuesByRange"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetValuesByRangeResponse">
+  	<wsdl:part name="parameters" element="tns:GetDataSetValuesByRangeResponse"></wsdl:part>
   </wsdl:message>
   <wsdl:portType name="service">
-    <wsdl:operation name="getDataSetsList">
-      <wsdl:output message="tns:getDataSetsListResponse"/>
+    <wsdl:operation name="GetDataSetsList">
+      <wsdl:input message="tns:GetDataSetsListRequest"/>
+      <wsdl:output message="tns:GetDataSetsListResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataSetValues">
+    	<wsdl:input message="tns:GetDataSetValuesRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetDataSetValuesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataSetValuesByRange">
+    	<wsdl:input message="tns:GetDataSetValuesByRangeRequest"></wsdl:input>
+    	<wsdl:output message="tns:GetDataSetValuesByRangeResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="serviceSOAP" type="tns:service">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="getDataSetsList">
-      <soap:operation soapAction="http://localhost:8888/getDataSetsList"/>
+    <wsdl:operation name="GetDataSetsList">
+      <soap:operation soapAction="http://localhost:8888/GetDataSetsList"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
@@ -31,7 +93,7 @@
   </wsdl:binding>
   <wsdl:service name="service">
     <wsdl:port binding="tns:serviceSOAP" name="serviceSOAP">
-      <soap:address location="http://localhost:8888/"/>
+      <soap:address location="http://localhost:8888/service.yaws"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

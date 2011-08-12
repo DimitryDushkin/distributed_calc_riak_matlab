@@ -1,0 +1,4 @@
+<erl>
+out(A) ->
+    yaws_rpc:handler_session(A, {dca_web_server_handler, handler}).
+</erl>

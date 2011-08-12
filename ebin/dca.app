@@ -3,7 +3,8 @@
               {vsn,"1.0.0"},
               {registered,[]},
               {modules,[dca_app,dca_db,dca_db_tests,dca_sup,dca_utils,
-                        dca_web_server,dca_web_server_tests]},
+                        dca_web_server,dca_web_server_handler,
+                        dca_web_server_tests]},
               {applications,[kernel,stdlib]},
               {mod,{dca_app,[]}},
               {env,[]}]}.
