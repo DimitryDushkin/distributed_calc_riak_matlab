@@ -7,9 +7,9 @@ main_test_() ->
      fun cleanup/1,
      [
       fun db_server_up/1,
-	  %fun insert_data/1,
+	  %fun insert_data/1
 	  %fun db_delete_data/1
-	  %fun range_request/1,
+	  fun range_request/1,
 	  %fun list_buckets/1
 	  fun list_bucket/1
      ]}.
@@ -33,8 +33,8 @@ delete_data(Pid) ->
 
 range_request(Pid) ->
 	Start = dca_utils:get_timestamp(),
-	Bucket = list_to_binary("2011-07-29-10:35:14"),
-	Reply = gen_server:call(Pid, {range_query, Bucket, "0", "1000"}, infinity),
+	Bucket = list_to_binary("2011-08-12-16:44:08"),
+	Reply = gen_server:call(Pid, {range_query, Bucket, "0", "0.1"}, infinity),
 	{ok, Result} = Reply,
 	error_logger:info_msg("Found ~p entries~n",[length(Result)]),
  	RequestTime = dca_utils:get_timestamp() - Start,
@@ -43,7 +43,7 @@ range_request(Pid) ->
 
 list_bucket(Pid) ->
 	Start = dca_utils:get_timestamp(),
-	Bucket = <<"2011-07-29-10:35:14">>,
+	Bucket = <<"2011-08-12-16:44:08">>,
 	Reply = gen_server:call(Pid, {list_bucket, Bucket}, 120000),
 	RequestTime = dca_utils:get_timestamp() - Start,
 	error_logger:info_msg("Entries count: ~p~n",[length(Reply)]),

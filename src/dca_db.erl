@@ -83,8 +83,7 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) ->
 				   [],						 %headers
 				   "application/json",		 %content-type
 				   RequestBody				 %body
-				   },							
-				  [], []),
+				   }, [], []),
 	
 	{ok, Regexp} = re:compile("([0-9.,]+)\t?"),
 	TotalLines = countlines(FilePath),
@@ -92,10 +91,11 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) ->
 					fun(Line, Count) ->
 						case re:run(Line, Regexp, [global, {capture, [1], list}]) of
 							{match, [[Time], [TimeValue]]} ->
+								Value = "{\"time\":" ++ Time ++ ",\"amount\": " ++ TimeValue ++ "}", 
 								Object = riakc_obj:new(list_to_binary(Bucket),
 													   list_to_binary(Time),
-													   list_to_binary(TimeValue),
-													   <<"text/plain">>),
+													   list_to_binary(Value),
+													   <<"application/json">>),
 								ok = riakc_pb_socket:put(Pid, Object);
 							_ -> error_logger:info_msg("Cannot parse:~p~n",[Line])
 						end,
@@ -114,7 +114,7 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) ->
 %% @see http://wiki.basho.com/Key-Filters.html
 
 handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->	
-	Query = "["++ From ++ " TO " ++ To ++ "]",
+	Query = "time:["++ From ++ " TO " ++ To ++ "]",
 	Result = riakc_pb_socket:search(Pid, Bucket, list_to_binary(Query)),
 	{reply, Result, State};
 
@@ -129,10 +129,8 @@ handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
 %% 	{reply, Result, State};
 
 handle_call({list_bucket, Bucket}, _, #state{db_pid = Pid} = State) ->
-	Query = [{map,												 	%query type
-			 {modfun, riak_kv_mapreduce, map_object_value},		 	%function from riak erlang built-in module
-			 none, true}],
- 	Result = riakc_pb_socket:mapred(Pid, Bucket, Query, 120000),
+	Query = "time:[0 TO 2]",
+	{ok, Result} = riakc_pb_socket:search(Pid, Bucket, list_to_binary(Query)),
 	{reply, Result, State};
 
 %% get buckets list
