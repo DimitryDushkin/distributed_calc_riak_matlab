@@ -9,7 +9,7 @@ main_test_() ->
       fun db_server_up/1,
 	  %fun insert_data/1
 	  %fun db_delete_data/1
-	  fun range_request/1,
+	  %fun range_request/1,
 	  %fun list_buckets/1
 	  fun list_bucket/1
      ]}.
@@ -41,14 +41,24 @@ range_request(Pid) ->
  	error_logger:info_msg("Request has taken:~p ms~n",[RequestTime]),
 	?_assertMatch({ok, _}, Reply).	
 
-list_bucket(Pid) ->
-	Start = dca_utils:get_timestamp(),
-	Bucket = <<"2011-08-12-16:44:08">>,
-	Reply = gen_server:call(Pid, {list_bucket, Bucket}, 120000),
-	RequestTime = dca_utils:get_timestamp() - Start,
-	error_logger:info_msg("Entries count: ~p~n",[length(Reply)]),
- 	error_logger:info_msg("Request has taken:~p ms~n",[RequestTime]),
-	?_assertEqual(true, is_list(Reply)).
+list_bucket(Pidd) ->
+%% 	Start = dca_utils:get_timestamp(),
+%% 	Bucket = <<"2011-08-12-16:44:08">>,
+%% 	Reply = gen_server:call(Pid, {list_bucket, Bucket}, 120000),
+%% 	RequestTime = dca_utils:get_timestamp() - Start,
+%% 	error_logger:info_msg("Entries count: ~p~n",[length(Reply)]),
+%%  	error_logger:info_msg("Request has taken:~p ms~n",[RequestTime]),
+%% 	?_assertEqual(true, is_list(Reply)).
+	Obj = riakc_obj:new(<<"test">>,
+						<<"1.1">>,
+						<<"1312.23">>,
+						<<"application/json">>),
+    Obj1 = riakc_obj:update_metadata(Obj,
+									 dict:store(<<"x-riak-index-amount_bin">>, <<"1312.23">>, dict:new())),
+    {ok, Pid} = riakc_pb_socket:start_link("127.0.0.1", 8081),
+	Result = riakc_pb_socket:put(Pid, Obj1, [{w, 1}, return_head]),
+	error_logger:info_msg("Result ~p~n",[Result]).
+
 
 list_buckets(Pid) ->
 	Start = dca_utils:get_timestamp(),

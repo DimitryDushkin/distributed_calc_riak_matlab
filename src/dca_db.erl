@@ -75,15 +75,15 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) ->
 	Bucket = dca_utils:get_date(),
 	
 	%% install riak search post-commit hook
-	inets:start(), 
-	RequestBody = "{\"props\":{\"precommit\":[{\"mod\":\"riak_search_kv_hook\",\"fun\":\"precommit\"}]}}",
-	Url = lists:append(["http://", ?RIAK_IP, ":", integer_to_list(?RIAK_HTTP_PORT), "/riak/", Bucket ]),
-	httpc:request(put,
-				  {Url, 
-				   [],						 %headers
-				   "application/json",		 %content-type
-				   RequestBody				 %body
-				   }, [], []),
+%% 	inets:start(), 
+%% 	RequestBody = "{\"props\":{\"precommit\":[{\"mod\":\"riak_search_kv_hook\",\"fun\":\"precommit\"}]}}",
+%% 	Url = lists:append(["http://", ?RIAK_IP, ":", integer_to_list(?RIAK_HTTP_PORT), "/riak/", Bucket ]),
+%% 	httpc:request(put,
+%% 				  {Url, 
+%% 				   [],						 %headers
+%% 				   "application/json",		 %content-type
+%% 				   RequestBody				 %body
+%% 				   }, [], []),
 	
 	{ok, Regexp} = re:compile("([0-9.,]+)\t?"),
 	TotalLines = countlines(FilePath),
@@ -96,7 +96,7 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) ->
 													   list_to_binary(Time),
 													   list_to_binary(Value),
 													   <<"application/json">>),
-								ok = riakc_pb_socket:put(Pid, Object);
+								ok = riakc_pb_socket:put(Pid, Object, [{r, 1}, {w, 1}]);		%% set "r" to 1 means riak have to agree to read with one node
 							_ -> error_logger:info_msg("Cannot parse:~p~n",[Line])
 						end,
 						case Count rem 10000 of
@@ -108,7 +108,7 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) ->
 	error_logger:info_msg("Entries inserted:~p~n", [ValueCount]),
 	{reply, ok, State};
 
-%% Perform range query via simple key filters
+%% Perform range query via riak search
 %% @see http://wiki.basho.com/MapReduce.html#MapReduce-via-the-Erlang-API
 %% @see more about pb client /deps/riakc/docs/pb-client.txt
 %% @see http://wiki.basho.com/Key-Filters.html
