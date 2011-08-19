@@ -74,6 +74,16 @@ init([]) ->
 handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) -> 
 	Bucket = dca_utils:get_date(),
 	
+	%% add bucket name to "buckets/list" entry
+	case riakc_pb_socket:get(Pid, <<"buckets">>, <<"list">>) of 
+		{ok, BucketsListObject} -> 
+			BucketsListObject1 = riakc_obj:update_value(BucketsListObject,
+												<<(riakc_obj:get_value(BucketsListObject))/binary, ("," ++ Bucket)/binary>>);
+		{error, notfound} ->
+			BucketsListObject1 = riakc_obj:new(<<"buckets">>, <<"list">>, list_to_binary(Bucket))
+	end,
+	ok = riakc_pb_socket:put(Pid, BucketsListObject1),
+	
 	%% install riak search post-commit hook
 %% 	inets:start(), 
 %% 	RequestBody = "{\"props\":{\"precommit\":[{\"mod\":\"riak_search_kv_hook\",\"fun\":\"precommit\"}]}}",
@@ -90,13 +100,11 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) ->
 	ValueCount = for_each_line_in_file(FilePath,
 					fun(Line, Count) ->
 						case re:run(Line, Regexp, [global, {capture, [1], list}]) of
-							{match, [[Time], [TimeValue]]} ->
-								Value = "{\"time\":" ++ Time ++ ",\"amount\": " ++ TimeValue ++ "}", 
+							{match, [[Time], [TimeValue]]} -> 
 								Object = riakc_obj:new(list_to_binary(Bucket),
 													   list_to_binary(Time),
-													   list_to_binary(Value),
-													   <<"application/json">>),
-								ok = riakc_pb_socket:put(Pid, Object, [{r, 1}, {w, 1}]);		%% set "r" to 1 means riak have to agree to read with one node
+													   list_to_binary(TimeValue)),
+								ok = riakc_pb_socket:put(Pid, Object, [{w, 1}]);		%% set "w" to 1 means riak have to agree to write with one node
 							_ -> error_logger:info_msg("Cannot parse:~p~n",[Line])
 						end,
 						case Count rem 10000 of

@@ -7,11 +7,11 @@ main_test_() ->
      fun cleanup/1,
      [
       fun db_server_up/1,
-	  %fun insert_data/1
+	  fun insert_data/1
 	  %fun db_delete_data/1
 	  %fun range_request/1,
 	  %fun list_buckets/1
-	  fun list_bucket/1
+	  %fun list_bucket/1
      ]}.
 
 setup() -> 
