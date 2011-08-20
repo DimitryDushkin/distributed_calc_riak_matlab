@@ -77,8 +77,9 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) ->
 	%% add bucket name to "buckets/list" entry
 	case riakc_pb_socket:get(Pid, <<"buckets">>, <<"list">>) of 
 		{ok, BucketsListObject} -> 
+			String = list_to_binary(Bucket ++ ","),
 			BucketsListObject1 = riakc_obj:update_value(BucketsListObject,
-												<<(riakc_obj:get_value(BucketsListObject))/binary, ("," ++ Bucket)/binary>>);
+														<<String/binary, (riakc_obj:get_value(BucketsListObject))/binary>>);
 		{error, notfound} ->
 			BucketsListObject1 = riakc_obj:new(<<"buckets">>, <<"list">>, list_to_binary(Bucket))
 	end,
@@ -121,20 +122,20 @@ handle_call({insert_data, FilePath}, _From, #state{db_pid = Pid} = State) ->
 %% @see more about pb client /deps/riakc/docs/pb-client.txt
 %% @see http://wiki.basho.com/Key-Filters.html
 
-handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->	
-	Query = "time:["++ From ++ " TO " ++ To ++ "]",
-	Result = riakc_pb_socket:search(Pid, Bucket, list_to_binary(Query)),
-	{reply, Result, State};
+%% handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->	
+%% 	Query = "time:["++ From ++ " TO " ++ To ++ "]",
+%% 	Result = riakc_pb_socket:search(Pid, Bucket, list_to_binary(Query)),
+%% 	{reply, Result, State};
 
 
 %% range query via list filters
-%% handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
-%% 	Query = [{map,												 	%query type
-%% 			 {modfun, riak_kv_mapreduce, map_object_value},		 	%function from riak erlang built-in module
-%% 			 none, true}],
-%%  	Inputs = {Bucket, [[<<"between">>, list_to_binary(From), list_to_binary(To)]]},
-%% 	Result = riakc_pb_socket:mapred(Pid, Inputs, Query, 120000),
-%% 	{reply, Result, State};
+handle_call({range_query, Bucket, From, To}, _, #state{db_pid = Pid} = State) ->
+	Query = [{map,												 	%query type
+			 {modfun, riak_kv_mapreduce, map_object_value},		 	%function from riak erlang built-in module
+			 none, true}],
+ 	Inputs = {list_to_binary(Bucket), [[<<"between">>, list_to_binary(From), list_to_binary(To)]]},
+	Result = riakc_pb_socket:mapred(Pid, Inputs, Query, 120000),
+	{reply, Result, State};
 
 handle_call({list_bucket, Bucket}, _, #state{db_pid = Pid} = State) ->
 	Query = "time:[0 TO 2]",
@@ -153,6 +154,10 @@ handle_call({delete_bucket, Bucket}, _From, #state{db_pid = Pid} = State) ->
 	TotalCount = erlang:length(Keys),
 	ok = delete_keys(Keys, 0, Pid, Bucket, TotalCount),
 	{reply, ok, State};
+
+handle_call({get, Bucket, Key}, _From, #state{db_pid = Pid} = State) ->
+	{ok, Result} = riakc_pb_socket:get(Pid, Bucket, Key),
+	{reply, Result, State};
 
 handle_call(ping, _From, #state{db_pid = Pid} = State) -> 
 	Result = riakc_pb_socket:ping(Pid),
